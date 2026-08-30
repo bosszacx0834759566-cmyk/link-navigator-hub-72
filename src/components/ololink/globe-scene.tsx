@@ -717,7 +717,7 @@ function LaserBeam({
     const dist = a.distanceTo(b);
     g.position.copy(mid);
     g.quaternion.setFromUnitVectors(up, b.clone().sub(a).normalize());
-    g.scale.set(0.011, dist, 0.011);
+    g.scale.set(0.0025, dist, 0.0025);
   });
 
   return (
