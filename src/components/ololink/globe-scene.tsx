@@ -717,34 +717,15 @@ function LaserBeam({
     const dist = a.distanceTo(b);
     g.position.copy(mid);
     g.quaternion.setFromUnitVectors(up, b.clone().sub(a).normalize());
-    g.scale.set(0.022, dist, 0.022);
+    g.scale.set(0.011, dist, 0.011);
   });
 
   return (
     <group ref={group}>
-      {/* faint outer glow */}
+      {/* plain straight green line, no glow/blending effects */}
       <mesh>
-        <cylinderGeometry args={[1, 1, 1, 12, 1, true]} />
-        <meshBasicMaterial
-          color="#4ade80"
-          transparent
-          opacity={0.3}
-          depthWrite={false}
-          blending={THREE.AdditiveBlending}
-          side={THREE.DoubleSide}
-        />
-      </mesh>
-      {/* solid dark-green laser core */}
-      <mesh>
-        <cylinderGeometry args={[0.45, 0.45, 1, 12, 1, true]} />
-        <meshBasicMaterial
-          color="#16a34a"
-          transparent
-          opacity={1}
-          depthWrite={false}
-          blending={THREE.AdditiveBlending}
-          side={THREE.DoubleSide}
-        />
+        <cylinderGeometry args={[1, 1, 1, 8]} />
+        <meshBasicMaterial color={LASER_GREEN} />
       </mesh>
     </group>
   );
